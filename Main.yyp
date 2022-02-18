@@ -1,7 +1,6 @@
 {
   "resources": [
     {"id":{"name":"sBarrier","path":"sprites/sBarrier/sBarrier.yy",},"order":2,},
-    {"id":{"name":"scrptPlayer","path":"scripts/scrptPlayer/scrptPlayer.yy",},"order":0,},
     {"id":{"name":"oBarrier","path":"objects/oBarrier/oBarrier.yy",},"order":2,},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":0,},
     {"id":{"name":"tStone_Walls","path":"tilesets/tStone_Walls/tStone_Walls.yy",},"order":0,},

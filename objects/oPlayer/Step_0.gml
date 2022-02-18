@@ -1,6 +1,11 @@
 left = keyboard_check(ord("A"));
 right = keyboard_check(ord("D"));
 up = keyboard_check(ord("W")) || keyboard_check(vk_space);
+restart = keyboard_check(ord("R"));
+
+if restart
+room_restart()
+
 xspd = spd * (right - left);
 if (place_meeting(x, y + 1, CollObj) and (up))
 {

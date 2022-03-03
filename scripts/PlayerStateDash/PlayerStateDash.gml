@@ -4,20 +4,14 @@ function PlayerStateDash(){
 	
 	if (dash and dashing == false) {
 		dashing = true;
+		sprite_state = PlayerStateSpriteDashing;
 		
 		var x_dir = sign(x_speed);
+		x_speed = x_dir * dash_speed;
 		
-		x_speed = dash_speed * x_dir;
 	}
 	
-	if (dashing) {
-		dash_counter += 1;
-		if(dash_counter mod 240) {
-			instance_create_depth(x, y, depth + 1, oPlayer_Effect);
-		}
-	}
-	
-	if (abs(x_speed) < max_speed) {
+	if ((abs(x_speed) < max_speed)) {
 		dashing = false;
 		state = PlayerStateFree;
 	}

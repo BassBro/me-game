@@ -1,6 +1,9 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function PlayerStateFree(){
+
+wjDelay = max(wjDelay - 1, 0)
+
+if (wjDelay = 0)
+{
 #region Horizontal Movement
 	
 	if (x_input != 0) {
@@ -16,23 +19,38 @@ function PlayerStateFree(){
 		}
 	}
 	
-	PlayerCollisionX();
-
 #endregion
+}
 
+PlayerCollisionX();
+
+if (wjDelay = 0)
+{
 #region Vertical Movement
 	
 	y_speed += grv;
+	y_speed = clamp(y_speed, -ymax_speed, ymax_speed);
 	
-	if (place_meeting(x, y + 1, obj_solid) and up) {
+	onground = place_meeting(x, y + 1, obj_solid)
+	if (onground and jump)
+	{
 		y_speed = jmpfrce;
+		sprite_state = PlayerStateSpriteJumping;
 	}
-	
-	PlayerCollisionY();
 
 #endregion
+}
 
-if (dash and candash = true) {
-	state = PlayerStateDash;
+PlayerCollisionY();
+
+onwall = place_meeting(x + 1, y, obj_solid) - place_meeting(x - 1, y, obj_solid);
+
+if (dash and candash = true) state = PlayerStateDash;
+
+
+if ((onwall !=0) and (onground = false))
+{
+	sprite_state = PlayerStateSpriteOnwall;
+	state = PlayerStateOnwall;
 }
 }
